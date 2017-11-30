@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-base=/usr/share/nginx/html
+base=/app
 source=$app/source
 config=$app/_config.yml
 
@@ -15,9 +15,9 @@ fi
 echo 'Building source files...'
 cd $base
 if hexo generate --debug; then
-  echo 'Build of files was successfull, starting nginx server...'
+  echo 'Build of files was successfull, nginx server should start now'
 else
   echo 'There was an error building your site' && exit 1
 fi
 
-nginx -g daemon off
+nginx -g "daemon off;"
