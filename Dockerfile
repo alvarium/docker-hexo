@@ -21,4 +21,4 @@ ADD entrypoint.sh /
 
 VOLUME [ "/app" ]
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["bash", "-c", "/entrypoint.sh"]
