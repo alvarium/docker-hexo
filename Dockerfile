@@ -1,11 +1,20 @@
-FROM node:boron
+FROM nginx:latest
 
-MAINTAINER Cirici New Media <hello@cirici.com>
+LABEL maintainer="Òscar Casajuana <oscar@alvarium.io>" version="0.2.0"
+
+RUN apt update && apt upgrade -y && apt install -y curl
+
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
+    apt install -y nodejs && \
+    npm install -g hexo-cli
+    # ln -s /usr/share/nginx/html /app
+
+ADD default.conf /etc/nginx/conf.d/default.conf
 
 WORKDIR /app
 
-RUN yarn global add hexo-cli
+ADD entrypoint.sh /
 
-EXPOSE 4000
+VOLUME [ "/app" ]
 
-ENTRYPOINT ["hexo", "server", "-i", "0.0.0.0"]
+ENTRYPOINT ["/entrypoint.sh"]
