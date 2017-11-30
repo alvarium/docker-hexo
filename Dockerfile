@@ -7,7 +7,6 @@ RUN apt update && apt upgrade -y && apt install -y curl wget gnupg
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
     apt install -y nodejs && \
     npm install -g hexo-cli
-    # ln -s /usr/share/nginx/html /app
 
 ENV PORT ${PORT:-${NGINX_HOST:-80}}
 
