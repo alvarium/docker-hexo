@@ -1,8 +1,16 @@
 Hexo docker image
 =================
 
+This image runs `npm install` + `hexo generate` and starts up an nginx server for
+you.
+
+You only need to run:
+
 ~~~bash
-docker run -d --name my-hexo-site -p 8080:4000 --volume $PWD:/app alvarium/hexo
+docker run -d --name my-hexo-site \
+  -p 8080:80
+  --volume $PWD:/app
+  alvarium/hexo
 ~~~
 
 License
