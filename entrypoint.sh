@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 base=/app
-source=$app/source
-config=$app/_config.yml
+source=$base/source
+config=$base/_config.yml
 
 if [ ! -d $base ]; then
-  echo '/usr/share/nginx/html folder not found!' && exit 1
+  echo '/app folder not found!' && exit 1
 fi
 
 if [ ! -d $source ]; then
