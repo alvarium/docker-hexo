@@ -2,7 +2,7 @@ FROM nginx:latest
 
 LABEL maintainer="Òscar Casajuana <oscar@alvarium.io>" version="0.2.0"
 
-RUN apt update && apt upgrade -y && apt install -y curl
+RUN apt update && apt upgrade -y && apt install -y curl wget gnupg
 
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
     apt install -y nodejs && \
@@ -21,4 +21,4 @@ ADD entrypoint.sh /
 
 VOLUME [ "/app" ]
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["bash", "-c", "/entrypoint.sh"]
