@@ -9,6 +9,10 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
     npm install -g hexo-cli
     # ln -s /usr/share/nginx/html /app
 
+ENV PORT ${PORT:-${NGINX_HOST:-80}}
+
+ENV NGINX_PORT ${PORT}
+
 ADD default.conf /etc/nginx/conf.d/default.conf
 
 WORKDIR /app
